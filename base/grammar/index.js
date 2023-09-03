@@ -1,3 +1,3 @@
 // require('./property');
-// require('./game');
-require('./module');
+require('./game');
+// require('./module');

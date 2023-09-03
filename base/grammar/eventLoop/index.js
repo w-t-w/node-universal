@@ -1,12 +1,13 @@
 const eventLoop = {
     loop: [],
     init() {
-        setInterval(() => {
-            while (this.loop.length) {
-                const listener = this.loop.shift();
-                listener();
-            }
-        }, 1000);
+        // setInterval(() => {
+        while (this.loop.length) {
+            const listener = this.loop.shift();
+            listener();
+        }
+        // }, 1000);
+        setTimeout(this.init.bind(this), 1000);
     },
     add(listener) {
         this.loop.push(listener);

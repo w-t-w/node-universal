@@ -12,6 +12,8 @@ const resultSelection = {
     1: '你赢了!'
 };
 
+const PORT = 7777;
+
 let playerWonCount = 0,
     sameCount = 0,
     lastPlayerAction = null,
@@ -26,7 +28,7 @@ app.get('/favicon.ico', (req, res) => {
 });
 
 app.get('/data', (req, res, next) => {
-    if (playerWonCount >= 3) {
+    if (playerWonCount >= 3 || sameCount === 9) {
         res.status(500);
         res.send('你太厉害了!我不跟你玩儿了!');
         return false;
@@ -62,13 +64,13 @@ app.get('/data', (req, res, next) => {
     }
     lastPlayerAction = action;
 
-    if (result === playerWonResult) {
-        res.playerWon = true;
-    }
-
-    res.resultRequest = resultRequest;
-
-    next();
+    setTimeout(() => {
+        if (result === playerWonResult) {
+            res.playerWon = true;
+        }
+        res.resultRequest = resultRequest;
+        next();
+    }, 2000);
 }, (req, res) => {
     const {resultRequest} = res;
     res.status(200);
@@ -78,4 +80,8 @@ app.get('/data', (req, res, next) => {
 app.get('/', (req, res) => {
     res.status(200);
     res.send(fs.readFileSync(TEMPLATE_DIR, 'utf-8'));
+});
+
+app.listen(PORT, () => {
+    console.log(`The server is running at http://localhost:${PORT}!`);
 });

@@ -4,7 +4,8 @@
   "description": "node universal",
   "main": "index.js",
   "scripts": {
-    "grammar": "node ./base/grammar/index.js"
+    "grammar": "node ./base/grammar/index.js",
+    "server": "node ./base/server/index.js"
   },
   "keywords": [
     "node",
@@ -13,6 +14,7 @@
   "author": "wtw",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.5.8"
+    "@types/node": "^20.5.8",
+    "express": "^4.18.2"
   }
 }

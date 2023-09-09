@@ -1,17 +1,15 @@
-const fs = require('fs');
 const path = require('path');
 const koa = require('koa');
 const koaMount = require('koa-mount');
 const koaStatic = require('koa-static');
 
-const tcpClient = require('./lib');
+const tcp_client = require('./lib');
+const create_template = require('../template');
 
 const PORT = 3000;
 
-const STATIC_DIR = path.resolve(process.cwd(), './source');
-const TEMPLATE_DIR = path.resolve(STATIC_DIR, './index.html');
-
-const template = fs.readFileSync(TEMPLATE_DIR);
+const STATIC_DIR = path.resolve(process.cwd(), './project/detail/source');
+const TEMPLATE_DIR = path.resolve(process.cwd(), './project/detail/template/index.html');
 
 const app = new koa();
 
@@ -35,17 +33,18 @@ app.use(koaMount('/', async ctx => {
     }
 
     const result = await new Promise((resolve, reject) => {
-        tcpClient.write({
+        tcp_client.write({
             column_id
         }, (err, data) => {
             err ? reject(err) : resolve(data);
         });
     });
 
+    const template = create_template(TEMPLATE_DIR);
+    const template_result = template(result);
 
     response.status = 200;
-    response.type = 'html';
-    response.body = template;
+    response.body = template_result;
 }));
 
 app.listen(PORT, () => {

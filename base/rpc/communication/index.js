@@ -1,2 +1,3 @@
 // require('./simplex');
-require('./half-dublex');
+// require('./half-dublex');
+require('./dublex');

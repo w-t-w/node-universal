@@ -1,2 +1,2 @@
 // require('./simple');
-require('./game');
+require('./game/simple');

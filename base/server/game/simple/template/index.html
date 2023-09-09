@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>石头、剪刀、布</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #result {
+            width: 1000px;
+            height: 800px;
+            background-color: darkgray;
+            color: #fff;
+        }
+
+        #operation {
+            margin-top: 8px;
+        }
+
+        #operation > button {
+            width: 120px;
+            height: 40px;
+            margin: 0 6px;
+            font-size: 15px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<section id="result">
+
+</section>
+<section id="operation">
+    <button id="rock" class="operation-button">
+        石头
+    </button>
+    <button id="scissors" class="operation-button">
+        剪刀
+    </button>
+    <button id="paper" class="operation-button">
+        布
+    </button>
+</section>
+<script type="text/javascript">
+    const buttonList = document.getElementsByClassName('operation-button');
+    const result = document.getElementById('result');
+    [...buttonList].forEach(button => {
+        button.addEventListener('click', e => {
+            const target = e.target;
+            fetch(`./game?action=${target.id}`)
+                .then(res => res.text())
+                .then(text => result.innerHTML += `${text}<br/>`);
+        })
+    });
+</script>
+</body>
+</html>

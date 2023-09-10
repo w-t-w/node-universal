@@ -24,9 +24,9 @@ app.use(koaMount('/favicon.ico', ctx => {
     return true;
 }));
 
-app.use(koaMount('/', async ctx => {
+app.use(koaMount('/data', async ctx => {
     const {request, response} = ctx;
-    const {query: {sort = 0, filter = 0}} = request;
+    const {query: {sort, filter}} = request;
 
     if (typeof sort === 'undefined' || typeof filter === 'undefined') {
         response.status = 400;
@@ -38,6 +38,23 @@ app.use(koaMount('/', async ctx => {
         rpc_client.write({
             sort,
             filter
+        }, (err, data) => {
+            err ? reject(err) : resolve(data);
+        });
+    });
+
+    response.status = 200;
+    response.body = result;
+}));
+
+app.use(koaMount('/', async ctx => {
+    const {request, response} = ctx;
+    const {query: {sort = 0, filter = 0}} = request;
+
+    const result = await new Promise((resolve, reject) => {
+        rpc_client.write({
+            sort: +sort,
+            filter: +filter
         }, (err, data) => {
             err ? reject(err) : resolve(data);
         });

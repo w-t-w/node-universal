@@ -12,7 +12,8 @@
     "component": "webpack --config=./project/list/component/webpack.component.js --color",
     "ssr": "webpack --config=./project/list/backend/webpack.ssr.js --color",
     "client": "node ./project/list/backend/client/index.js",
-    "backend": "node ./project/list/backend/server/index.js"
+    "backend": "node ./project/list/backend/server/index.js",
+    "frontend": "webpack --config=./project/list/frontend/webpack.config.js --color"
   },
   "keywords": [
     "node",

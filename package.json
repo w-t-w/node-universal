@@ -8,7 +8,11 @@
     "server": "node ./base/server/index.js",
     "rpc": "node ./base/rpc/index.js",
     "project": "node ./project/index.js",
-    "template": "node ./template/index.js"
+    "template": "node ./template/index.js",
+    "component": "webpack --config=./project/list/component/webpack.component.js --color",
+    "ssr": "webpack --config=./project/list/backend/webpack.ssr.js --color",
+    "client": "node ./project/list/backend/client/index.js",
+    "backend": "node ./project/list/backend/server/index.js"
   },
   "keywords": [
     "node",
@@ -17,12 +21,27 @@
   "author": "wtw",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.17",
+    "@babel/preset-env": "^7.22.15",
+    "@babel/preset-react": "^7.22.15",
     "@types/node": "^20.5.8",
+    "babel-loader": "^9.1.3",
+    "core-js": "^3.32.2",
     "easy_sock": "^0.4.1",
     "express": "^4.18.2",
     "koa": "^2.14.2",
     "koa-mount": "^4.0.0",
     "koa-static": "^5.0.0",
-    "protocol-buffers": "^5.0.0"
+    "protocol-buffers": "^5.0.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

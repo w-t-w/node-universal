@@ -20,10 +20,13 @@ app.use(koaMount('/favicon.ico', ctx => {
     return true;
 }));
 
+const buffer = fs.readFileSync(TEMPLATE_DIR);
+
 app.use(koaMount('/', ctx => {
     const {response} = ctx;
     response.status = 200;
-    response.body = fs.readFileSync(TEMPLATE_DIR, 'utf-8');
+    response.type = 'html';
+    response.body = buffer;
 }));
 
 app.listen(PORT, () => {

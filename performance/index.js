@@ -1,1 +1,2 @@
-require('./process/index');
+// require('./process');
+require('./cluster');

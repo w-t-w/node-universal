@@ -7,7 +7,7 @@ const koaStatic = require('koa-static');
 const PORT = 7777;
 
 const ROOT_DIR = path.resolve(__dirname, './source');
-const TEMPLATE_DIR = path.resolve(__dirname, './source/index.html');
+const TEMPLATE_DIR = path.resolve(__dirname, './template/index.html');
 
 const app = new koa();
 

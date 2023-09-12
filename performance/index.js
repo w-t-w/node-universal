@@ -1,2 +1,3 @@
 // require('./process');
-require('./cluster');
+// require('./cluster');
+require('./daemon');

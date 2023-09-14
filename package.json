@@ -14,7 +14,8 @@
     "client": "node ./project/list/backend/client/index.js",
     "backend": "node ./project/list/backend/server/index.js",
     "frontend": "webpack --config=./project/list/frontend/webpack.config.js --color",
-    "performance": "node ./performance/index.js"
+    "performance": "node ./performance/index.js",
+    "graphql": "node ./graphql/index.js"
   },
   "keywords": [
     "node",

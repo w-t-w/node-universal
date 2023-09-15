@@ -15,7 +15,7 @@ schema.getQueryType().getFields().comments.resolve = () => {
 };
 
 schema.getMutationType().getFields().parise.resolve = (argv0, {id}) => {
-    comments[id - 1]['pariseNum']++;
+    return ++comments[id - 1]['pariseNum'];
 };
 
 module.exports = schema;

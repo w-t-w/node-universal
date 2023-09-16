@@ -12,7 +12,8 @@ function factory(config) {
         then = config.then || default_callback,
         catch_callback = config.catch || default_catch;
 
-    requesterCache.compile(config);
+    const requester = requesterCache[config.protocol];
+    requester.compile(config);
 
     return async function (data) {
         try {
@@ -23,7 +24,7 @@ function factory(config) {
         }
 
         return {
-            result: await requesterCache
+            result: await requester
                 .request(data)
                 .then(then)
                 .catch(catch_callback)

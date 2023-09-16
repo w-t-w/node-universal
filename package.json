@@ -16,6 +16,7 @@
     "frontend": "webpack --config=./project/list/frontend/webpack.config.js --color",
     "performance": "node ./performance/index.js",
     "graphql": "node ./graphql/index.js",
+    "framework_client": "node ./framework/src/index.js",
     "framework_server": "node ./framework/server/index.js"
   },
   "keywords": [

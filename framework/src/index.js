@@ -3,7 +3,7 @@ const path = require('path');
 
 const run = require('./run');
 
-const TEMPLATE_DIR = path.resolve(process.cwd(), './framework/config/play/framework_template.html');
+const TEMPLATE_DIR = path.resolve(process.cwd(), './framework/config/play/framework_template.tpl');
 
 const PORT = 7777;
 

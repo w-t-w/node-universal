@@ -15,7 +15,8 @@
     "backend": "node ./project/list/backend/server/index.js",
     "frontend": "webpack --config=./project/list/frontend/webpack.config.js --color",
     "performance": "node ./performance/index.js",
-    "graphql": "node ./graphql/index.js"
+    "graphql": "node ./graphql/index.js",
+    "framework_server": "node ./framework/server/index.js"
   },
   "keywords": [
     "node",
@@ -38,6 +39,7 @@
     "koa-mount": "^4.0.0",
     "koa-static": "^5.0.0",
     "protocol-buffers": "^5.0.0",
+    "request": "^2.88.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },
